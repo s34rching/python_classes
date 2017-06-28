@@ -14,23 +14,25 @@ class test_add_group(unittest.TestCase):
     def setUp(self):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
-    
-    def test_test_add_group(self):
-        wd = self.wd
-        self.open_home_pafe(wd)
-        self.login(wd)
-        self.open_group_page(wd)
-        self.init_group_creation(wd)
-        self.fill_creating_form(wd)
-        self.create_group(wd)
-        self.return_to_group_page(wd)
-        self.logout(wd)
 
-    def logout(self, wd):
-        wd.find_element_by_link_text("Logout").click()
+    def open_home_pafe(self, wd):
+        wd.get("http://localhost/addressbook/")
 
-    def return_to_group_page(self, wd):
-        wd.find_element_by_link_text("group page").click()
+    def login(self, wd):
+        wd.find_element_by_name("user").click()
+        wd.find_element_by_name("user").clear()
+        wd.find_element_by_name("user").send_keys("admin")
+        wd.find_element_by_name("pass").click()
+        wd.find_element_by_name("pass").click()
+        wd.find_element_by_name("pass").clear()
+        wd.find_element_by_name("pass").send_keys("secret")
+        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
+
+    def open_group_page(self, wd):
+        wd.find_element_by_link_text("groups").click()
+
+    def init_group_creation(self, wd):
+        wd.find_element_by_name("new").click()
 
     def create_group(self, wd):
         # init group creation
@@ -48,24 +50,23 @@ class test_add_group(unittest.TestCase):
         # submit group cretion
         wd.find_element_by_name("submit").click()
 
-    def init_group_creation(self, wd):
-        wd.find_element_by_name("new").click()
+    def return_to_group_page(self, wd):
+        wd.find_element_by_link_text("group page").click()
 
-    def open_group_page(self, wd):
-        wd.find_element_by_link_text("groups").click()
+    def logout(self, wd):
+        wd.find_element_by_link_text("Logout").click()
 
-    def login(self, wd):
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys("admin")
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys("secret")
-        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
 
-    def open_home_pafe(self, wd):
-        wd.get("http://localhost/addressbook/")
+    def test_test_add_group(self):
+        wd = self.wd
+        self.open_home_pafe(wd)
+        self.login(wd)
+        self.open_group_page(wd)
+        self.init_group_creation(wd)
+        self.fill_creating_form(wd)
+        self.create_group(wd)
+        self.return_to_group_page(wd)
+        self.logout(wd)
 
     def tearDown(self):
         self.wd.quit()
