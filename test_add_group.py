@@ -35,8 +35,6 @@ class test_add_group(unittest.TestCase):
         wd.find_element_by_name("new").click()
 
     def create_group(self, wd):
-        # init group creation
-        wd.find_element_by_name("new").click()
         # fill creating form
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
@@ -56,14 +54,12 @@ class test_add_group(unittest.TestCase):
     def logout(self, wd):
         wd.find_element_by_link_text("Logout").click()
 
-
     def test_test_add_group(self):
         wd = self.wd
         self.open_home_pafe(wd)
         self.login(wd)
         self.open_group_page(wd)
         self.init_group_creation(wd)
-        self.fill_creating_form(wd)
         self.create_group(wd)
         self.return_to_group_page(wd)
         self.logout(wd)
