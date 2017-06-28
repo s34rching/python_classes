@@ -16,7 +16,7 @@ class test_add_group(unittest.TestCase):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
 
-    def open_home_pafe(self, wd):
+    def open_home_page(self, wd):
         wd.get("http://localhost/addressbook/")
 
     def login(self, wd, username, password):
@@ -67,7 +67,7 @@ class test_add_group(unittest.TestCase):
 
     def test_add_empty_group(self):
         wd = self.wd
-        self.open_home_pafe(wd)
+        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
         self.open_group_page(wd)
         self.init_group_creation(wd)
