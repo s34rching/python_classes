@@ -14,16 +14,6 @@ class test_add_contact(unittest.TestCase):
     def setUp(self):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
-    
-    def test_test_add_contact(self):
-        success = True
-        wd = self.wd
-        self.open_home_page(wd)
-        self.login(wd)
-        self.init_contact_creation(wd)
-        self.create_new_contact(wd)
-        self.return_to_homepage(wd)
-        self.logout(wd)
 
     def open_home_page(self, wd):
         wd.get("http://localhost/addressbook/")
@@ -73,6 +63,16 @@ class test_add_contact(unittest.TestCase):
     def logout(self, wd):
         # logout
         wd.find_element_by_link_text("Logout").click()
+    
+    def test_test_add_contact(self):
+        success = True
+        wd = self.wd
+        self.open_home_page(wd)
+        self.login(wd)
+        self.init_contact_creation(wd)
+        self.create_new_contact(wd)
+        self.return_to_homepage(wd)
+        self.logout(wd)
 
     def tearDown(self):
         self.wd.quit()
