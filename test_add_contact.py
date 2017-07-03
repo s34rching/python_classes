@@ -15,11 +15,12 @@ class test_add_contact(unittest.TestCase):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
 
-    def open_home_page(self, wd):
+    def open_home_page(self):
         wd.get("http://localhost/addressbook/")
 
-    def login(self, wd, username, password):
-        self.open_home_page(wd)
+    def login(self, username, password):
+        wd = self.wd
+        self.open_home_page()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
@@ -28,12 +29,14 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[@type='submit']").click()
 
-    def init_contact_creation(self, wd):
+    def init_contact_creation(self):
+        wd = self.wd
         # init contact creating
         wd.find_element_by_link_text("add new").click()
 
-    def create_new_contact(self, wd, contact):
-        self.init_contact_creation(wd)
+    def create_new_contact(self, contact):
+        wd = self.wd
+        self.init_contact_creation()
         # create new contact
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -59,20 +62,21 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_xpath("//div[@id='content']/form/input[@type='submit']").click()
         self.return_to_homepage(wd)
 
-    def return_to_homepage(self, wd):
+    def return_to_homepage(self):
+        wd = self.wd
         # return to the homepage
         wd.find_element_by_link_text("home page").click()
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         # logout
         wd.find_element_by_link_text("Logout").click()
     
     def test_add_contact(self):
-        wd = self.wd
-        self.login(wd, username="admin", password="secret")
+        self.login(username="admin", password="secret")
         self.create_new_contact(wd, Contact(firstname="Test", middlename="Test", lastname="Test", nickname="test_contact1", address="some address, 1", home_number="+375293003030",
                                 mobile_number="+375294004040"))
-        self.logout(wd)
+        self.logout(w)
 
     def tearDown(self):
         self.wd.quit()
