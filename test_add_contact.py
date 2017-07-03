@@ -19,6 +19,7 @@ class test_add_contact(unittest.TestCase):
         wd.get("http://localhost/addressbook/")
 
     def login(self, wd, username, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
@@ -32,6 +33,7 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_link_text("add new").click()
 
     def create_new_contact(self, wd, contact):
+        self.init_contact_creation(wd)
         # create new contact
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -55,6 +57,7 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("mobile").clear()
         wd.find_element_by_name("mobile").send_keys(contact.mobile_number)
         wd.find_element_by_xpath("//div[@id='content']/form/input[@type='submit']").click()
+        self.return_to_homepage(wd)
 
     def return_to_homepage(self, wd):
         # return to the homepage
@@ -66,12 +69,9 @@ class test_add_contact(unittest.TestCase):
     
     def test_add_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
-        self.init_contact_creation(wd)
         self.create_new_contact(wd, Contact(firstname="Test", middlename="Test", lastname="Test", nickname="test_contact1", address="some address, 1", home_number="+375293003030",
                                 mobile_number="+375294004040"))
-        self.return_to_homepage(wd)
         self.logout(wd)
 
     def tearDown(self):
