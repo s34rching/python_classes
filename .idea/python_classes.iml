@@ -6,7 +6,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PackageRequirementsSettings">
-    <option name="requirementsPath" value="" />
+    <option name="requirementsPath" value="D:\Courses\Automated testing - Python\GIthub\python_classes\tests\test_add_group.py" />
   </component>
   <component name="TestRunnerService">
     <option name="projectConfiguration" value="py.test" />
