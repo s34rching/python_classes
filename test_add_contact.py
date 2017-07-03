@@ -25,7 +25,7 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
+        wd.find_element_by_xpath("//form[@id='LoginForm']/input[@type='submit']").click()
 
     def init_contact_creation(self, wd):
         # init contact creating
@@ -54,7 +54,7 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
         wd.find_element_by_name("mobile").send_keys(contact.mobile_number)
-        wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        wd.find_element_by_xpath("//div[@id='content']/form/input[@type='submit']").click()
 
     def return_to_homepage(self, wd):
         # return to the homepage
@@ -64,8 +64,7 @@ class test_add_contact(unittest.TestCase):
         # logout
         wd.find_element_by_link_text("Logout").click()
     
-    def test_test_add_contact(self):
-        success = True
+    def test_add_contact(self):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, username="admin", password="secret")
