@@ -1,3 +1,4 @@
+from selenium.webdriver.support import expected_conditions as EC
 class ContactHelper:
 
     def __init__(self, app):
@@ -44,3 +45,13 @@ class ContactHelper:
         wd = self.app.wd
         # return to the homepage
         wd.find_element_by_link_text("home page").click()
+
+    def delete_contact(self):
+        wd = self.app.wd
+        # select contact
+        wd.find_element_by_name("selected[]").click()
+        # init deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # submit deletion
+        wd.switch_to_alert().accept()
+        self.return_to_homepage()
