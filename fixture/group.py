@@ -29,3 +29,31 @@ class GroupHelper:
     def return_to_group_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
+
+    def delete(self):
+        wd = self.app.wd
+        self.open_group_page()
+        wd.find_element_by_xpath('//input[@name="selected[]"]').click()
+        if not wd.find_element_by_name("selected[]").is_selected():
+            wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath('//input[@name="delete"]').click()
+        self.return_to_group_page()
+
+    def edit(self, group):
+        wd = self.app.wd
+        self.open_group_page()
+        wd.find_element_by_xpath('//input[@name="selected[]"]').click()
+        if not wd.find_element_by_name("selected[]").is_selected():
+            wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath('//input[@name="edit"]').click()
+        wd.find_element_by_xpath('//input[@name="group_name"]').click()
+        wd.find_element_by_xpath('//input[@name="group_name"]').clear()
+        wd.find_element_by_xpath('//input[@name="group_name"]').send_keys(group.group_name)
+        wd.find_element_by_xpath('//textarea[@name="group_header"]').click()
+        wd.find_element_by_xpath('//textarea[@name="group_header"]').clear()
+        wd.find_element_by_xpath('//textarea[@name="group_header"]').send_keys(group.header)
+        wd.find_element_by_xpath('//textarea[@name="group_footer"]').click()
+        wd.find_element_by_xpath('//textarea[@name="group_footer"]').clear()
+        wd.find_element_by_xpath('//textarea[@name="group_footer"]').send_keys(group.footer)
+        wd.find_element_by_xpath('//input[@name="update"]').click()
+        self.return_to_group_page()
