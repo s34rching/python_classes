@@ -9,8 +9,8 @@ def test_edit_group_name(app):
     group = Group(name='ModifiedName')
     group.id = old_group[0].id
     app.group.modify(group)
+    assert len(old_group) == app.group.count()
     new_group = app.group.get_group_list()
-    assert len(old_group) == len(new_group)
     old_group[0] = group
     assert sorted(new_group, key=Group.id_or_max) == sorted(old_group, key=Group.id_or_max)
 

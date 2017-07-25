@@ -41,6 +41,7 @@ class ContactHelper:
         wd.find_element_by_name("mobile").send_keys(contact.mobile_number)
         wd.find_element_by_xpath("//div[@id='content']/form/input[@type='submit']").click()
         self.return_to_homepage()
+        self.contact_cache = None
 
     def return_to_homepage(self):
         wd = self.app.wd
@@ -77,6 +78,7 @@ class ContactHelper:
         # submit deletion
         wd.switch_to_alert().accept()
         self.return_to_homepage()
+        self.contact_cache = None
 
     def edit(self, new_group_data):
         wd = self.app.wd
@@ -89,17 +91,21 @@ class ContactHelper:
         wd.find_element_by_name('update').click()
         # return to homepage
         self.return_to_homepage()
+        self.contact_cache = None
 
     def count(self):
         wd = self.app.wd
         return len(wd.find_elements_by_name('selected[]'))
 
+    contact_cache = None
+
     def get_contact_list(self):
-        wd = self.app.wd
-        contacts = []
-        for element in wd.find_elements_by_xpath("//table[@id = 'maintable']//tr[@name = 'entry']"):
-            lastname = element.find_element_by_xpath("//td[2]").text
-            firstname = element.find_element_by_xpath("//td[3]").text
-            id = element.find_element_by_name('selected[]').get_attribute('id')
-            contacts.append(Contact(firstname=firstname, lastname=lastname, id=id))
-        return contacts
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.contact_cache = []
+            for element in wd.find_elements_by_xpath("//table[@id = 'maintable']//tr[@name = 'entry']"):
+                lastname = element.find_element_by_xpath("//td[2]").text
+                firstname = element.find_element_by_xpath("//td[3]").text
+                id = element.find_element_by_name('selected[]').get_attribute('id')
+                self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id))
+        return list(self.contact_cache)
