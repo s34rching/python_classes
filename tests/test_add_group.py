@@ -4,13 +4,18 @@ from models.group import Group
 
 def test_test_add_group(app):
     old_group = app.group.get_group_list()
-    app.group.create(Group(group_name="test_group", header="some_text", footer="some_text"))
+    group = Group(name="test_group", header="some_text", footer="some_text")
+    app.group.create(group)
     new_group = app.group.get_group_list()
     assert len(old_group) + 1 == len(new_group)
-
+    old_group.append(group)
+    assert sorted(new_group, key=Group.id_or_max) == sorted(old_group, key=Group.id_or_max)
 
 def test_add_empty_group(app):
     old_group = app.group.get_group_list()
-    app.group.create(Group(group_name="", header="", footer=""))
+    group = Group(name="", header="", footer="")
+    app.group.create(group)
     new_group = app.group.get_group_list()
     assert len(old_group) + 1 == len(new_group)
+    old_group.append(group)
+    assert sorted(new_group, key=Group.id_or_max) == sorted(old_group, key=Group.id_or_max)

@@ -34,7 +34,7 @@ class GroupHelper:
 
     def fill_group_form(self, group):
         wd = self.app.wd
-        self.change_field_value('group_name', group.group_name)
+        self.change_field_value('group_name', group.name)
         self.change_field_value('group_header', group.header)
         self.change_field_value('group_footer', group.footer)
 
@@ -69,8 +69,8 @@ class GroupHelper:
         wd = self.app.wd
         self.open_group_page()
         groups = []
-        for element in wd.find_elements_by_css_selector('span.group'):
+        for element in wd.find_elements_by_xpath("//span[@class='group']"):
             text = element.text
             id = element.find_element_by_name('selected[]').get_attribute('value')
-            groups.append(Group(group_name=text, id=id))
+            groups.append(Group(name=text, id=id))
         return groups
