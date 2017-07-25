@@ -26,6 +26,10 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_xpath('//input[@name="selected[]"]').click()
 
+    def select_group_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name('selected[]')[index].click()
+
     def change_field_value(self, group_name, text):
         wd = self.app.wd
         if text is not None:
@@ -53,10 +57,28 @@ class GroupHelper:
         self.return_to_group_page()
         self.group_cache = None
 
+    def delete_some_group(self, index):
+        wd = self.app.wd
+        self.open_group_page()
+        self.select_group_by_index(index)
+        wd.find_element_by_xpath('//input[@name="delete"]').click()
+        self.return_to_group_page()
+        self.group_cache = None
+
     def modify(self, new_group_data):
         wd = self.app.wd
         self.open_group_page()
         self.select_first_group()
+        wd.find_element_by_name('edit').click()
+        self.fill_group_form(new_group_data)
+        wd.find_element_by_name('update').click()
+        self.return_to_group_page()
+        self.group_cache = None
+
+    def modify_some_group(self, new_group_data, index):
+        wd = self.app.wd
+        self.open_group_page()
+        self.select_group_by_index(index)
         wd.find_element_by_name('edit').click()
         self.fill_group_form(new_group_data)
         wd.find_element_by_name('update').click()

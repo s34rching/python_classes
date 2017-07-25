@@ -52,6 +52,10 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
     def type(self, field_name, text):
         wd = self.app.wd
         if text is not None:
@@ -80,11 +84,22 @@ class ContactHelper:
         self.return_to_homepage()
         self.contact_cache = None
 
-    def edit(self, new_group_data):
+    def delete_some_contact(self, index):
         wd = self.app.wd
-        self.select_first_contact()
+        # select contact
+        self.select_contact_by_index(index)
+        # init deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # submit deletion
+        wd.switch_to_alert().accept()
+        self.return_to_homepage()
+        self.contact_cache = None
+
+    def edit_some_contact(self, new_group_data, index):
+        wd = self.app.wd
+        self.select_contact_by_index(index)
         # init edition
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
         # modify contact data
         self.fill_contact_form(new_group_data)
         # submit modifying

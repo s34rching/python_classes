@@ -1,4 +1,5 @@
 from models.group import Group
+from random import randrange
 
 
 def test_edit_group_name(app):
@@ -8,7 +9,8 @@ def test_edit_group_name(app):
     old_group = app.group.get_group_list()
     group = Group(name='ModifiedName')
     group.id = old_group[0].id
-    app.group.modify(group)
+    index = randrange(len(old_group))
+    app.group.modify_some_group(group, index)
     assert len(old_group) == app.group.count()
     new_group = app.group.get_group_list()
     old_group[0] = group

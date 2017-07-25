@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from models.contact import Contact
+from random import randrange
 
 
 def test_edit_contact_firstname(app):
@@ -10,7 +11,8 @@ def test_edit_contact_firstname(app):
     contact = Contact(firstname='F_ModifiedName')
     contact.id = old_contact_list[0].id
     contact.lastname = old_contact_list[0].lastname
-    app.contact.edit(contact)
+    index = randrange(len(old_contact_list))
+    app.contact.edit_some_contact(contact, index)
     assert len(old_contact_list) == app.contact.count()
     new_contact_list = app.contact.get_contact_list()
     old_contact_list[0] = contact
