@@ -137,7 +137,7 @@ class ContactHelper:
                 id = cells[0].find_element_by_tag_name('input').get_attribute('value')
                 self.contact_cache.append(Contact(firstname=firstname, lastname=lastname,
                                                   home_number=all_phones[0], mobile_number=all_phones[1],
-#                                                  work_number=all_phones[2], secondary_number=all_phones[3],
+                                                  work_number=all_phones[2], secondary_number=all_phones[3],
                                                   address=address, email=email, id=id))
         return list(self.contact_cache)
 
