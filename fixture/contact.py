@@ -1,4 +1,5 @@
 from models.contact import Contact
+import re
 
 class ContactHelper:
 
@@ -45,6 +46,12 @@ class ContactHelper:
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys(contact.email)
+        wd.find_element_by_name("email2").click()
+        wd.find_element_by_name("email2").clear()
+        wd.find_element_by_name("email2").send_keys(contact.email)
+        wd.find_element_by_name("email3").click()
+        wd.find_element_by_name("email3").clear()
+        wd.find_element_by_name("email3").send_keys(contact.email)
         wd.find_element_by_name("phone2").click()
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(contact.secondary_number)
@@ -132,13 +139,13 @@ class ContactHelper:
                 lastname = cells[1].text
                 firstname = cells[2].text
                 address = cells[3].text
-                email = cells[4].text
-                all_phones = cells[5].text.splitlines()
+                all_emails = cells[4].text
+                all_phones = cells[5].text
                 id = cells[0].find_element_by_tag_name('input').get_attribute('value')
                 self.contact_cache.append(Contact(firstname=firstname, lastname=lastname,
-                                                  home_number=all_phones[0], mobile_number=all_phones[1],
-                                                  work_number=all_phones[2], secondary_number=all_phones[3],
-                                                  address=address, email=email, id=id))
+                                                  all_phones_from_homepage = all_phones,
+                                                  all_emails_from_homepage = all_emails,
+                                                  address=address, id=id))
         return list(self.contact_cache)
 
     def open_contact_to_edit_by_index(self, c_index):
@@ -148,12 +155,12 @@ class ContactHelper:
         cell = row.find_elements_by_tag_name('td')[7]
         cell.find_element_by_tag_name('a').click()
 
-#    def open_contact_view_by_index(self, c_index):
-#        wd = self.app.wd
-#        self.app.open_home_page()
-#        row = wd.find_elements_by_name('entry')[c_index]
-#        cell = row.find_elements_by_tag_name('tr')[6]
-#        cell.find_element_by_tag_name('a').click()
+    def open_contact_view_by_index(self, c_index):
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_elements_by_name('entry')[c_index]
+        cell = row.find_elements_by_tag_name('td')[6]
+        cell.find_element_by_tag_name('a').click()
 
     def get_contact_info_from_edit_page(self, c_index):
         wd = self.app.wd
@@ -165,8 +172,22 @@ class ContactHelper:
         mobile_number = wd.find_element_by_name('mobile').get_attribute('value')
         work_number = wd.find_element_by_name('work').get_attribute('value')
         email = wd.find_element_by_name('email').get_attribute('value')
+        email2 = wd.find_element_by_name('email2').get_attribute('value')
+        email3 = wd.find_element_by_name('email3').get_attribute('value')
         secondary_number = wd.find_element_by_name('phone2').get_attribute('value')
         id = wd.find_element_by_name('id').get_attribute('value')
         return Contact(firstname=firstname, lastname=lastname, address=address, home_number=home_number,
                        mobile_number=mobile_number, work_number=work_number,
-                       email=email, secondary_number=secondary_number, id=id)
+                       email=email, email2=email2, email3=email3, secondary_number=secondary_number, id=id)
+
+    def get_contact_info_from_view_page(self, c_index):
+        wd = self.app.wd
+        self.open_contact_view_by_index(c_index)
+        text = wd.find_element_by_id('content').text
+        home_number = re.search('H: (.+)', text).group(1)
+        mobile_number = re.search('M: (.+)', text).group(1)
+        work_number = re.search('W: (.+)', text).group(1)
+        secondary_number = re.search('P: (.+)', text).group(1)
+        return Contact(home_number=home_number,
+                       mobile_number=mobile_number, work_number=work_number,
+                       secondary_number=secondary_number, id=id)
