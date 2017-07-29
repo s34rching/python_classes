@@ -39,6 +39,15 @@ class ContactHelper:
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
         wd.find_element_by_name("mobile").send_keys(contact.mobile_number)
+        wd.find_element_by_name("work").click()
+        wd.find_element_by_name("work").clear()
+        wd.find_element_by_name("work").send_keys(contact.work_number)
+        wd.find_element_by_name("email").click()
+        wd.find_element_by_name("email").clear()
+        wd.find_element_by_name("email").send_keys(contact.email)
+        wd.find_element_by_name("phone2").click()
+        wd.find_element_by_name("phone2").clear()
+        wd.find_element_by_name("phone2").send_keys(contact.secondary_number)
         wd.find_element_by_xpath("//div[@id='content']/form/input[@type='submit']").click()
         self.return_to_homepage()
         self.contact_cache = None
@@ -118,9 +127,24 @@ class ContactHelper:
         if self.contact_cache is None:
             wd = self.app.wd
             self.contact_cache = []
-            for element in wd.find_elements_by_xpath("//table[@id = 'maintable']//tr[@name = 'entry']"):
-                lastname = element.find_element_by_xpath("//td[2]").text
-                firstname = element.find_element_by_xpath("//td[3]").text
-                id = element.find_element_by_name('selected[]').get_attribute('id')
+            for element in wd.find_elements_by_name("entry"):
+                cells = element.find_elements_by_tag_name("td")
+                lastname = cells[1].text
+                firstname = cells[2].text
+                id = cells[0].find_element_by_tag_name('input').get_attribute('value')
                 self.contact_cache.append(Contact(firstname=firstname, lastname=lastname, id=id))
         return list(self.contact_cache)
+
+    def open_contact_to_edit_by_index(self, c_index):
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_elements_by_name('entry')[c_index]
+        cell = row.find_elements_by_tag_name('tr')[7]
+        cell.find_element_by_tag_name('a').click()
+
+#    def open_contact_view_by_index(self, c_index):
+#        wd = self.app.wd
+#        self.app.open_home_page()
+#        row = wd.find_elements_by_name('entry')[c_index]
+#        cell = row.find_elements_by_tag_name('tr')[6]
+#        cell.find_element_by_tag_name('a').click()

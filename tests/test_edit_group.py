@@ -3,14 +3,15 @@ from random import randrange
 
 
 def test_edit_group_name(app):
-#    if app.group.count() == 0:
-#        app.group.create(Group(name='ListWasEmpty'))
-#    app.group.open_group_page()
+    if app.group.count() == 0:
+        app.group.create(Group(name='ListWasEmpty'))
+    app.group.open_group_page()
     old_group = app.group.get_group_list()
     group = Group(name='ModifiedName')
     group.id = old_group[0].id
-    index = randrange(len(old_group))
-    app.group.modify_some_group(group, index)
+#    index = randrange(len(old_group))
+    app.group.modify_some_group(group, 0)
+    app.group.modify(group)
     assert len(old_group) == app.group.count()
     new_group = app.group.get_group_list()
     old_group[0] = group

@@ -11,6 +11,7 @@ def test_test_add_group(app):
     old_group.append(group)
     assert sorted(new_group, key=Group.id_or_max) == sorted(old_group, key=Group.id_or_max)
 
+
 def test_add_empty_group(app):
     old_group = app.group.get_group_list()
     group = Group(name="", header="", footer="")
