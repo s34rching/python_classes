@@ -66,6 +66,10 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
 
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_xpath("//input[@id='%s']" % id).click()
+
     def type(self, field_name, text):
         wd = self.app.wd
         if text is not None:
@@ -103,6 +107,18 @@ class ContactHelper:
         self.return_to_homepage()
         self.contact_cache = None
 
+    def delete_some_contact_by_id(self, id):
+        wd = self.app.wd
+        # select contact
+        self.select_contact_by_id(id)
+        # init deletion
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # submit deletion
+        wd.switch_to_alert().accept()
+        self.return_to_homepage()
+        self.contact_cache = None
+
+
     def edit_some_contact(self, new_group_data, index):
         wd = self.app.wd
         self.select_contact_by_index(index)
@@ -115,6 +131,27 @@ class ContactHelper:
         # return to homepage
         self.return_to_homepage()
         self.contact_cache = None
+
+    def edit_some_contact_by_id(self, new_group_data, id):
+        wd = self.app.wd
+        self.select_contact_by_id(id)
+        # init edition
+        wd.find_element_by_xpath("//tr[td/input[@id='%s']]//img[@alt='Edit']" % id).click()
+        # modify contact data
+        self.fill_contact_form(new_group_data)
+        # submit modifying
+        wd.find_element_by_name('update').click()
+        # return to homepage
+        self.return_to_homepage()
+        self.contact_cache = None
+
+#    def test_f(self, id):
+#        wd = self.app.wd
+#        self.select_contact_by_id(id)
+#        # init edition
+#        parent_node = wd.find_element_by_xpath("//tr[td/input[@id='%s']]//img[@alt='Edit']" % id).click()
+#        parent_node.find_element_by_xpath("//img[@alt='Edit']").click()
+#        return parent_node
 
     def count(self):
         wd = self.app.wd

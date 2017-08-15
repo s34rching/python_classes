@@ -5,6 +5,7 @@ import os.path
 from fixture.application import Application
 import importlib
 from fixture.db import DbFixture
+from fixture.orm import ORMFixture
 
 fixture = None
 target = None
@@ -51,6 +52,13 @@ def stop(request):
 @pytest.fixture
 def check_ui(request):
     return request.config.getoption('--check_ui')
+
+@pytest.fixture(scope='session')
+def orm(request):
+    orm_config = load_config(request.config.getoption('--target'))['db']
+    ormfixture = ORMFixture(host=orm_config['host'], name=orm_config['name'], user=orm_config['user'],password=orm_config['password'])
+    return ormfixture
+
 
 def pytest_addoption(parser):
     parser.addoption('--browser', action='store', default='firefox')
