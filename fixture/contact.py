@@ -1,5 +1,7 @@
+from selenium.webdriver.support.ui import Select
 from models.contact import Contact
 import re
+from random import randrange
 
 class ContactHelper:
 
@@ -12,13 +14,37 @@ class ContactHelper:
 
     def init_contact_creation(self):
         wd = self.app.wd
+        self.open_home_page()
         # init contact creating
         wd.find_element_by_link_text("add new").click()
+
+    def select_group(self):
+        wd = self.app.wd
+        list_of_options = wd.find_elements_by_xpath("//select[@name='new_group']//option")
+        index = randrange(len(list_of_options))
+        Select(wd.find_element_by_xpath("//select[@name='new_group']")).select_by_index(index)
 
     def create(self, contact):
         wd = self.app.wd
         self.init_contact_creation()
         # create new contact
+        self.fill_contact_form_with_extended_data(contact)
+        wd.find_element_by_xpath("//div[@id='content']/form/input[@type='submit']").click()
+        self.return_to_homepage()
+        self.contact_cache = None
+
+    def create_contact_with_adding_to_group(self, contact):
+        wd = self.app.wd
+        self.init_contact_creation()
+        # create new contact
+        self.fill_contact_form(contact)
+        self.select_group()
+        wd.find_element_by_xpath("//input[@type='submit']").click()
+        self.return_to_homepage()
+        self.contact_cache = None
+
+    def fill_contact_form_with_extended_data(self, contact):
+        wd = self.app.wd
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)
@@ -49,9 +75,6 @@ class ContactHelper:
         wd.find_element_by_name("phone2").click()
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(contact.secondary_number)
-        wd.find_element_by_xpath("//div[@id='content']/form/input[@type='submit']").click()
-        self.return_to_homepage()
-        self.contact_cache = None
 
     def return_to_homepage(self):
         wd = self.app.wd
@@ -118,6 +141,15 @@ class ContactHelper:
         self.return_to_homepage()
         self.contact_cache = None
 
+    def remove_contact_from_group(self, id, group_id):
+        wd = self.app.wd
+        self.open_home_page()
+        wd.find_element_by_xpath("//select[@name='group']").click()
+        wd.find_element_by_xpath("//select[@name='group']/option[@value='%s']" % group_id).click()
+        self.select_contact_by_id(id)
+        wd.find_element_by_xpath("//input[@name='remove']").click()
+        self.return_to_homepage()
+        self.contact_cache = None
 
     def edit_some_contact(self, new_group_data, index):
         wd = self.app.wd
