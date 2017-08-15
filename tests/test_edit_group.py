@@ -3,17 +3,17 @@ import random
 from random import randrange
 
 
-def test_edit_group_name(app, db, check_ui):
-    if len(db.get_group_list()) == 0:
+def test_edit_group_name(app, orm, check_ui):
+    if len(orm.get_group_list()) == 0:
         app.group.create(Group(name='FirstGroup'))
     app.group.open_group_page()
-    old_group = db.get_group_list()
+    old_group = orm.get_group_list()
     index = randrange(len(old_group))
     random_group = old_group[index]
     group = Group(name='ModifiedName')
     group.id = random_group.id
     app.group.modify_some_group_by_id(group, random_group.id)
-    new_group = db.get_group_list()
+    new_group = orm.get_group_list()
     old_group[index] = group
     assert sorted(new_group, key=Group.id_or_max) == sorted(old_group, key=Group.id_or_max)
     if check_ui:
