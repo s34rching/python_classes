@@ -12,10 +12,9 @@ def test_edit_contact_firstname(app, orm, check_ui):
     index = randrange(len(old_contact_list))
     random_contact = old_contact_list[index]
     contact.id = random_contact.id
-    print(random_contact.id)
     app.contact.edit_some_contact_by_id(contact, random_contact.id)
     new_contact_list = orm.get_contact_list()
-    old_contact_list[index] = contact
+#    old_contact_list[index] = contact
     assert sorted(old_contact_list, key=Contact.id_or_max) == sorted(new_contact_list, key=Contact.id_or_max)
     if check_ui:
         assert sorted(new_contact_list, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
