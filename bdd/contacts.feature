@@ -19,6 +19,7 @@ Scenario Outline: Delete random contact
 
 Scenario Outline: Edit random contact
     Given a non-empty contact list
+    Given a random index from list of the contacts
     Given a random contact from the list
     Given a contact with new <firstname>
     When I edit a random contact from the list

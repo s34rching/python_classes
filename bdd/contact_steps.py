@@ -9,29 +9,29 @@ def contact_list(orm):
 
 
 @given('a contact with attributes <firstname>, <lastname>, <address>, <email>, <home_number>, <mobile_number>, <work_number>, <secondary_number>, <email2>, <email3>')
-def new_contact(firstname, lastname, address, email, home_number, mobile_number, work_number, secondary_number, email2, email3):
+def contact(firstname, lastname, address, email, home_number, mobile_number, work_number, secondary_number, email2, email3):
     return Contact(firstname=firstname, lastname=lastname, address=address, email=email, home_number=home_number, work_number=work_number, mobile_number=mobile_number,
                    secondary_number=secondary_number, email2=email2, email3=email3)
 
 
 @when('I add a new contact to the list')
-def add_new_contact(app, new_contact):
-    app.contact.create(new_contact)
+def add_new_contact(app, contact):
+    app.contact.create(contact)
 
 
 @then('the new contact list is equal to the old list with the added contact')
-def verify_contact_added(orm, new_contact, contact_list):
+def verify_contact_added(orm, contact, contact_list):
     old_contacts_list = contact_list
     new_contacts_list = orm.get_contact_list()
-    old_contacts_list.append(new_contact)
+    old_contacts_list.append(contact)
     assert sorted(old_contacts_list, key=Contact.id_or_max) == sorted(new_contacts_list, key=Contact.id_or_max)
 
 
 @given('a non-empty contact list')
 def old_contact_list(app, orm):
     if app.contact.count() == 0:
-        app.contact.create(Contact(firstname="Test", middlename="Test", lastname="Test", nickname="test_contact1",
-                               address="some address, 1", home_number="+375293003030", mobile_number="+375294004040"))
+        app.contact.create(Contact(firstname="q", lastname="q", address="q", email="q", home_number="q", work_number="q", mobile_number="q",
+                   secondary_number="q", email2="q", email3="q"))
     return orm.get_contact_list()
 
 
@@ -53,17 +53,21 @@ def verify_contact_deleted(orm, random_contact, old_contact_list):
 
 
 @given('a non-empty contact list')
-def old_contact_list(app, orm):
+def e_old_contact_list(app, orm):
     if app.contact.count() == 0:
-        app.contact.create(Contact(firstname="Test", middlename="Test", lastname="Test", nickname="test_contact1",
-                               address="some address, 1", home_number="+375293003030", mobile_number="+375294004040"))
+        app.contact.create(Contact(firstname="q", lastname="q", address="q", email="q", home_number="q", work_number="q", mobile_number="q",
+                   secondary_number="q", email2="q", email3="q"))
     return orm.get_contact_list()
 
 
+@given('a random index from list of the contacts')
+def random_index(old_contact_list):
+    return randrange(len(old_contact_list))
+
+
 @given('a random contact from the list')
-def random_contact(old_contact_list):
-    index = randrange(len(old_contact_list))
-    return old_contact_list[index]
+def random_contact(old_contact_list, random_index):
+    return old_contact_list[random_index]
 
 
 @given('a contact with new <firstname>')
@@ -77,6 +81,8 @@ def edit_random_contact(app, random_contact, new_contact):
 
 
 @then('the new contact list is equal to the old list')
-def verify_contact_edited(orm, old_contact_list):
+def verify_contact_edited(orm, e_old_contact_list, random_index, new_contact):
+    ed_old_contact_list = e_old_contact_list
+    ed_old_contact_list[random_index] = new_contact
     new_contact_list = orm.get_contact_list()
-    assert sorted(old_contact_list, key=Contact.id_or_max) == sorted(new_contact_list, key=Contact.id_or_max)
+    assert sorted(ed_old_contact_list, key=Contact.id_or_max) == sorted(new_contact_list, key=Contact.id_or_max)

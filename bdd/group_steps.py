@@ -15,7 +15,7 @@ def add_new_group(app, new_group):
     app.group.create(new_group)
 
 @then('the new group is equal to the old list with the added group')
-def verify_group_added(orm, group_list):
+def verify_group_added(orm, group_list, new_group):
     old_groups = group_list
     new_groups = orm.get_group_list()
     old_groups.append(new_group)
