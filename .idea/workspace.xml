@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f628dcb-09b9-4675-aebd-39032b3050bd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_add_contact.py" afterPath="$PROJECT_DIR$/tests/test_add_contact.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_add_group.py" afterPath="$PROJECT_DIR$/tests/test_add_group.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_delete_contact.py" afterPath="$PROJECT_DIR$/tests/test_delete_contact.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test_edit_contact.py" afterPath="$PROJECT_DIR$/tests/test_edit_contact.py" />
-    </list>
+    <list default="true" id="4f628dcb-09b9-4675-aebd-39032b3050bd" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

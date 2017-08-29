@@ -1,0 +1,25 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "TypeError: object of type 'NoneType' has no len()",
+      "children" : [ {
+        "name" : "test_add_contact[None:::None:]",
+        "uid" : "d1b1d4b7649e0152",
+        "parentUid" : "4038057a9fd0812fc39b9f8e3c927469",
+        "status" : "failed",
+        "time" : {
+          "start" : 1504024610568,
+          "stop" : 1504024621738,
+          "duration" : 11170
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "4038057a9fd0812fc39b9f8e3c927469"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

@@ -1,0 +1,131 @@
+{
+  "uid" : "22f53858bd9772c3",
+  "name" : "test_add_contact[None:lastnamekTRKU J :namef6 :mnk Tw0ISt8B4d:address EV y]",
+  "fullName" : "tests.test_add_contact.test_add_contact[None:lastnamekTRKU J :namef6 :mnk Tw0ISt8B4d:address EV y]",
+  "historyId" : "1f6841dc795beb8e61844a125b3dd719",
+  "time" : {
+    "start" : 1504024627870,
+    "stop" : 1504024630852,
+    "duration" : 2982
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "statusDetails" : {
+    "flaky" : false
+  },
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given a contact with attributes <firstname>, <lastname>, <address>, <email>, <home_number>, <mobile_number>, <work_number>, <secondary_number>, <email2>, <email3>",
+      "time" : {
+        "start" : 1504024627896,
+        "stop" : 1504024627896,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "Given a contact list",
+      "time" : {
+        "start" : 1504024627896,
+        "stop" : 1504024627902,
+        "duration" : 6
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "When I add a new contact to the list",
+      "time" : {
+        "start" : 1504024627902,
+        "stop" : 1504024630842,
+        "duration" : 2940
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "Then the new contact list is equal to the old list with the added contact",
+      "time" : {
+        "start" : 1504024630842,
+        "stop" : 1504024630851,
+        "duration" : 9
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : false,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : true,
+    "stepsCount" : 4
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "Q"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "10432-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "tests.test_add_contact"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.test_add_contact"
+  }, {
+    "name" : "testMethod",
+    "value" : "test_add_contact[None:lastnamekTRKU J :namef6 :mnk Tw0ISt8B4d:address EV y]"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_add_contact"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "22f53858bd9772c3.json",
+  "statusDetailsSafe" : {
+    "flaky" : false
+  },
+  "statusMessage" : {
+    "present" : false
+  },
+  "parameterValues" : [ ]
+}

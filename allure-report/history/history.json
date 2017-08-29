@@ -1,0 +1,117 @@
+{
+  "b051ad8ef2899874c6c95af99445cca1" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "cbd6c697ec495c12",
+      "status" : "passed",
+      "time" : {
+        "start" : 1504024624852,
+        "stop" : 1504024627869,
+        "duration" : 3017
+      }
+    } ]
+  },
+  "4b9962f9427d3be7ddee1d270d3f4cf0" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "4555bc383196e09f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1504024633868,
+        "stop" : 1504024636959,
+        "duration" : 3091
+      }
+    } ]
+  },
+  "5e0a76651548c7f81b2045b59b4c8336" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "f2370b3c219794e",
+      "status" : "passed",
+      "time" : {
+        "start" : 1504024630852,
+        "stop" : 1504024633867,
+        "duration" : 3015
+      }
+    } ]
+  },
+  "98f8faf8994da08565d2b30785dc1b60" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "90bf8735ec129719",
+      "status" : "passed",
+      "time" : {
+        "start" : 1504024621739,
+        "stop" : 1504024624852,
+        "duration" : 3113
+      }
+    } ]
+  },
+  "1f6841dc795beb8e61844a125b3dd719" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "22f53858bd9772c3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1504024627870,
+        "stop" : 1504024630852,
+        "duration" : 2982
+      }
+    } ]
+  },
+  "8608cfc74b9e819ebea974151e2efadb" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "d1b1d4b7649e0152",
+      "status" : "failed",
+      "statusDetails" : "TypeError: object of type 'NoneType' has no len()",
+      "time" : {
+        "start" : 1504024610568,
+        "stop" : 1504024621738,
+        "duration" : 11170
+      }
+    } ]
+  }
+}

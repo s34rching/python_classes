@@ -1,0 +1,140 @@
+{
+  "uid" : "d1b1d4b7649e0152",
+  "name" : "test_add_contact[None:::None:]",
+  "fullName" : "tests.test_add_contact.test_add_contact[None:::None:]",
+  "historyId" : "8608cfc74b9e819ebea974151e2efadb",
+  "time" : {
+    "start" : 1504024610568,
+    "stop" : 1504024621738,
+    "duration" : 11170
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "failed",
+  "statusDetails" : {
+    "message" : "TypeError: object of type 'NoneType' has no len()",
+    "trace" : "app = <fixture.application.Application object at 0x04024FD0>\norm = <fixture.orm.ORMFixture object at 0x0405BA70>\njson_contacts = None:::None:, check_ui = False\n\n    def test_add_contact(app, orm, json_contacts, check_ui):\n        with pytest.allure.step('Given a contact with attributes <firstname>, <lastname>, <address>, <email>, <home_number>, <mobile_number>, <work_number>, <secondary_number>, <email2>, <email3>'):\n            contact = json_contacts\n        with pytest.allure.step('Given a contact list'):\n            old_contact_list = orm.get_contact_list()\n        with pytest.allure.step('When I add a new contact to the list'):\n>           app.contact.create(contact)\n\ntests\\test_add_contact.py:12: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nfixture\\contact.py:31: in create\n    self.fill_contact_form_with_extended_data(contact)\nfixture\\contact.py:62: in fill_contact_form_with_extended_data\n    wd.find_element_by_name(\"mobile\").send_keys(contact.mobile_number)\nenv\\lib\\site-packages\\selenium\\webdriver\\remote\\webelement.py:349: in send_keys\n    {'text': \"\".join(keys_to_typing(value)),\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = (None,)\n\n    def keys_to_typing(value):\n        \"\"\"Processes the values that will be typed in the element.\"\"\"\n        typing = []\n        for val in value:\n            if isinstance(val, Keys):\n                typing.append(val)\n            elif isinstance(val, int):\n                val = str(val)\n                for i in range(len(val)):\n                    typing.append(val[i])\n            else:\n>               for i in range(len(val)):\nE               TypeError: object of type 'NoneType' has no len()\n\nenv\\lib\\site-packages\\selenium\\webdriver\\common\\utils.py:150: TypeError",
+    "flaky" : false
+  },
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "failed",
+    "statusDetails" : {
+      "message" : "TypeError: object of type 'NoneType' has no len()",
+      "trace" : "app = <fixture.application.Application object at 0x04024FD0>\norm = <fixture.orm.ORMFixture object at 0x0405BA70>\njson_contacts = None:::None:, check_ui = False\n\n    def test_add_contact(app, orm, json_contacts, check_ui):\n        with pytest.allure.step('Given a contact with attributes <firstname>, <lastname>, <address>, <email>, <home_number>, <mobile_number>, <work_number>, <secondary_number>, <email2>, <email3>'):\n            contact = json_contacts\n        with pytest.allure.step('Given a contact list'):\n            old_contact_list = orm.get_contact_list()\n        with pytest.allure.step('When I add a new contact to the list'):\n>           app.contact.create(contact)\n\ntests\\test_add_contact.py:12: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nfixture\\contact.py:31: in create\n    self.fill_contact_form_with_extended_data(contact)\nfixture\\contact.py:62: in fill_contact_form_with_extended_data\n    wd.find_element_by_name(\"mobile\").send_keys(contact.mobile_number)\nenv\\lib\\site-packages\\selenium\\webdriver\\remote\\webelement.py:349: in send_keys\n    {'text': \"\".join(keys_to_typing(value)),\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = (None,)\n\n    def keys_to_typing(value):\n        \"\"\"Processes the values that will be typed in the element.\"\"\"\n        typing = []\n        for val in value:\n            if isinstance(val, Keys):\n                typing.append(val)\n            elif isinstance(val, int):\n                val = str(val)\n                for i in range(len(val)):\n                    typing.append(val[i])\n            else:\n>               for i in range(len(val)):\nE               TypeError: object of type 'NoneType' has no len()\n\nenv\\lib\\site-packages\\selenium\\webdriver\\common\\utils.py:150: TypeError",
+      "flaky" : false
+    },
+    "steps" : [ {
+      "name" : "Given a contact with attributes <firstname>, <lastname>, <address>, <email>, <home_number>, <mobile_number>, <work_number>, <secondary_number>, <email2>, <email3>",
+      "time" : {
+        "start" : 1504024620224,
+        "stop" : 1504024620224,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "statusDetails" : {
+        "flaky" : false
+      },
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "Given a contact list",
+      "time" : {
+        "start" : 1504024620224,
+        "stop" : 1504024620230,
+        "duration" : 6
+      },
+      "status" : "passed",
+      "statusDetails" : {
+        "flaky" : false
+      },
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "When I add a new contact to the list",
+      "time" : {
+        "start" : 1504024620230,
+        "stop" : 1504024621703,
+        "duration" : 1473
+      },
+      "status" : "failed",
+      "statusDetails" : {
+        "message" : "TypeError: object of type 'NoneType' has no len()",
+        "trace" : "app = <fixture.application.Application object at 0x04024FD0>\norm = <fixture.orm.ORMFixture object at 0x0405BA70>\njson_contacts = None:::None:, check_ui = False\n\n    def test_add_contact(app, orm, json_contacts, check_ui):\n        with pytest.allure.step('Given a contact with attributes <firstname>, <lastname>, <address>, <email>, <home_number>, <mobile_number>, <work_number>, <secondary_number>, <email2>, <email3>'):\n            contact = json_contacts\n        with pytest.allure.step('Given a contact list'):\n            old_contact_list = orm.get_contact_list()\n        with pytest.allure.step('When I add a new contact to the list'):\n>           app.contact.create(contact)\n\ntests\\test_add_contact.py:12: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nfixture\\contact.py:31: in create\n    self.fill_contact_form_with_extended_data(contact)\nfixture\\contact.py:62: in fill_contact_form_with_extended_data\n    wd.find_element_by_name(\"mobile\").send_keys(contact.mobile_number)\nenv\\lib\\site-packages\\selenium\\webdriver\\remote\\webelement.py:349: in send_keys\n    {'text': \"\".join(keys_to_typing(value)),\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = (None,)\n\n    def keys_to_typing(value):\n        \"\"\"Processes the values that will be typed in the element.\"\"\"\n        typing = []\n        for val in value:\n            if isinstance(val, Keys):\n                typing.append(val)\n            elif isinstance(val, int):\n                val = str(val)\n                for i in range(len(val)):\n                    typing.append(val[i])\n            else:\n>               for i in range(len(val)):\nE               TypeError: object of type 'NoneType' has no len()\n\nenv\\lib\\site-packages\\selenium\\webdriver\\common\\utils.py:150: TypeError",
+        "flaky" : false
+      },
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : true,
+      "attachmentsCount" : 0,
+      "hasContent" : true,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 0,
+    "hasContent" : true,
+    "stepsCount" : 3
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "Q"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "10432-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "tests.test_add_contact"
+  }, {
+    "name" : "testClass",
+    "value" : "tests.test_add_contact"
+  }, {
+    "name" : "testMethod",
+    "value" : "test_add_contact[None:::None:]"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_add_contact"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ ]
+  },
+  "source" : "d1b1d4b7649e0152.json",
+  "statusDetailsSafe" : {
+    "message" : "TypeError: object of type 'NoneType' has no len()",
+    "trace" : "app = <fixture.application.Application object at 0x04024FD0>\norm = <fixture.orm.ORMFixture object at 0x0405BA70>\njson_contacts = None:::None:, check_ui = False\n\n    def test_add_contact(app, orm, json_contacts, check_ui):\n        with pytest.allure.step('Given a contact with attributes <firstname>, <lastname>, <address>, <email>, <home_number>, <mobile_number>, <work_number>, <secondary_number>, <email2>, <email3>'):\n            contact = json_contacts\n        with pytest.allure.step('Given a contact list'):\n            old_contact_list = orm.get_contact_list()\n        with pytest.allure.step('When I add a new contact to the list'):\n>           app.contact.create(contact)\n\ntests\\test_add_contact.py:12: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nfixture\\contact.py:31: in create\n    self.fill_contact_form_with_extended_data(contact)\nfixture\\contact.py:62: in fill_contact_form_with_extended_data\n    wd.find_element_by_name(\"mobile\").send_keys(contact.mobile_number)\nenv\\lib\\site-packages\\selenium\\webdriver\\remote\\webelement.py:349: in send_keys\n    {'text': \"\".join(keys_to_typing(value)),\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nvalue = (None,)\n\n    def keys_to_typing(value):\n        \"\"\"Processes the values that will be typed in the element.\"\"\"\n        typing = []\n        for val in value:\n            if isinstance(val, Keys):\n                typing.append(val)\n            elif isinstance(val, int):\n                val = str(val)\n                for i in range(len(val)):\n                    typing.append(val[i])\n            else:\n>               for i in range(len(val)):\nE               TypeError: object of type 'NoneType' has no len()\n\nenv\\lib\\site-packages\\selenium\\webdriver\\common\\utils.py:150: TypeError",
+    "flaky" : false
+  },
+  "statusMessage" : {
+    "present" : true
+  },
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,252 @@
+<ns0:test-suite xmlns:ns0="urn:model.allure.qatools.yandex.ru" start="1504024610568" stop="1504024636959">
+  <name>tests.test_add_contact</name>
+  <labels/>
+  <test-cases>
+    <test-case start="1504024610568" status="failed" stop="1504024621738">
+      <name>test_add_contact[None:::None:]</name>
+      <failure>
+        <message>TypeError: object of type 'NoneType' has no len()</message>
+        <stack-trace>app = &lt;fixture.application.Application object at 0x04024FD0&gt;
+orm = &lt;fixture.orm.ORMFixture object at 0x0405BA70&gt;
+json_contacts = None:::None:, check_ui = False
+
+    def test_add_contact(app, orm, json_contacts, check_ui):
+        with pytest.allure.step('Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;'):
+            contact = json_contacts
+        with pytest.allure.step('Given a contact list'):
+            old_contact_list = orm.get_contact_list()
+        with pytest.allure.step('When I add a new contact to the list'):
+&gt;           app.contact.create(contact)
+
+tests\test_add_contact.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+fixture\contact.py:31: in create
+    self.fill_contact_form_with_extended_data(contact)
+fixture\contact.py:62: in fill_contact_form_with_extended_data
+    wd.find_element_by_name("mobile").send_keys(contact.mobile_number)
+env\lib\site-packages\selenium\webdriver\remote\webelement.py:349: in send_keys
+    {'text': "".join(keys_to_typing(value)),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = (None,)
+
+    def keys_to_typing(value):
+        """Processes the values that will be typed in the element."""
+        typing = []
+        for val in value:
+            if isinstance(val, Keys):
+                typing.append(val)
+            elif isinstance(val, int):
+                val = str(val)
+                for i in range(len(val)):
+                    typing.append(val[i])
+            else:
+&gt;               for i in range(len(val)):
+E               TypeError: object of type 'NoneType' has no len()
+
+env\lib\site-packages\selenium\webdriver\common\utils.py:150: TypeError</stack-trace>
+      </failure>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="10432-MainThread"/>
+        <label name="host" value="Q"/>
+      </labels>
+      <steps>
+        <step start="1504024620224" status="passed" stop="1504024620224">
+          <name>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</name>
+          <title>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024620224" status="passed" stop="1504024620230">
+          <name>Given a contact list</name>
+          <title>Given a contact list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024620230" status="failed" stop="1504024621703">
+          <name>When I add a new contact to the list</name>
+          <title>When I add a new contact to the list</title>
+          <attachments/>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+    <test-case start="1504024621739" status="passed" stop="1504024624852">
+      <name>test_add_contact[None:lastnameD7M5a:name1:mn1Gwe :address5HMjvOEELP2 HD]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="10432-MainThread"/>
+        <label name="host" value="Q"/>
+      </labels>
+      <steps>
+        <step start="1504024621753" status="passed" stop="1504024621753">
+          <name>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</name>
+          <title>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024621753" status="passed" stop="1504024621759">
+          <name>Given a contact list</name>
+          <title>Given a contact list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024621759" status="passed" stop="1504024624846">
+          <name>When I add a new contact to the list</name>
+          <title>When I add a new contact to the list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024624846" status="passed" stop="1504024624851">
+          <name>Then the new contact list is equal to the old list with the added contact</name>
+          <title>Then the new contact list is equal to the old list with the added contact</title>
+          <attachments/>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+    <test-case start="1504024624852" status="passed" stop="1504024627869">
+      <name>test_add_contact[None:lastnamedBiUg:namedQ0Bo7:mn Sl0W1E1 :address rTVkW7OBQTo t]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="10432-MainThread"/>
+        <label name="host" value="Q"/>
+      </labels>
+      <steps>
+        <step start="1504024624878" status="passed" stop="1504024624878">
+          <name>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</name>
+          <title>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024624878" status="passed" stop="1504024624885">
+          <name>Given a contact list</name>
+          <title>Given a contact list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024624885" status="passed" stop="1504024627863">
+          <name>When I add a new contact to the list</name>
+          <title>When I add a new contact to the list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024627863" status="passed" stop="1504024627869">
+          <name>Then the new contact list is equal to the old list with the added contact</name>
+          <title>Then the new contact list is equal to the old list with the added contact</title>
+          <attachments/>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+    <test-case start="1504024627870" status="passed" stop="1504024630852">
+      <name>test_add_contact[None:lastnamekTRKU J :namef6 :mnk Tw0ISt8B4d:address EV y]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="10432-MainThread"/>
+        <label name="host" value="Q"/>
+      </labels>
+      <steps>
+        <step start="1504024627896" status="passed" stop="1504024627896">
+          <name>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</name>
+          <title>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024627896" status="passed" stop="1504024627902">
+          <name>Given a contact list</name>
+          <title>Given a contact list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024627902" status="passed" stop="1504024630842">
+          <name>When I add a new contact to the list</name>
+          <title>When I add a new contact to the list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024630842" status="passed" stop="1504024630851">
+          <name>Then the new contact list is equal to the old list with the added contact</name>
+          <title>Then the new contact list is equal to the old list with the added contact</title>
+          <attachments/>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+    <test-case start="1504024630852" status="passed" stop="1504024633867">
+      <name>test_add_contact[None:lastnameTL Hai:name7 wI rwO:mnsX:address7fbyS2  Ugd 7O]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="10432-MainThread"/>
+        <label name="host" value="Q"/>
+      </labels>
+      <steps>
+        <step start="1504024630879" status="passed" stop="1504024630879">
+          <name>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</name>
+          <title>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024630879" status="passed" stop="1504024630885">
+          <name>Given a contact list</name>
+          <title>Given a contact list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024630885" status="passed" stop="1504024633861">
+          <name>When I add a new contact to the list</name>
+          <title>When I add a new contact to the list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024633861" status="passed" stop="1504024633867">
+          <name>Then the new contact list is equal to the old list with the added contact</name>
+          <title>Then the new contact list is equal to the old list with the added contact</title>
+          <attachments/>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+    <test-case start="1504024633868" status="passed" stop="1504024636959">
+      <name>test_add_contact[None:lastnameGI  pz7FOpM:name88 wBWaQ:mnsCd7WM ScU:address]</name>
+      <attachments/>
+      <labels>
+        <label name="severity" value="normal"/>
+        <label name="thread" value="10432-MainThread"/>
+        <label name="host" value="Q"/>
+      </labels>
+      <steps>
+        <step start="1504024633900" status="passed" stop="1504024633900">
+          <name>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</name>
+          <title>Given a contact with attributes &lt;firstname&gt;, &lt;lastname&gt;, &lt;address&gt;, &lt;email&gt;, &lt;home_number&gt;, &lt;mobile_number&gt;, &lt;work_number&gt;, &lt;secondary_number&gt;, &lt;email2&gt;, &lt;email3&gt;</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024633900" status="passed" stop="1504024633906">
+          <name>Given a contact list</name>
+          <title>Given a contact list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024633906" status="passed" stop="1504024636959">
+          <name>When I add a new contact to the list</name>
+          <title>When I add a new contact to the list</title>
+          <attachments/>
+          <steps/>
+        </step>
+        <step start="1504024636959" status="passed" stop="1504024636959">
+          <name>Then the new contact list is equal to the old list with the added contact</name>
+          <title>Then the new contact list is equal to the old list with the added contact</title>
+          <attachments/>
+          <steps/>
+        </step>
+      </steps>
+    </test-case>
+  </test-cases>
+</ns0:test-suite>
